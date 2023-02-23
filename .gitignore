@@ -31,6 +31,12 @@ example/.vscode/
 .pub/
 build/
 
+# Windows related
+**/windows
+
+# Linux related
+**/linux
+
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
