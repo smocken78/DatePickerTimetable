@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/opt/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/smocken/flutter-git/date_picker_timetable"
+export "FLUTTER_ROOT=C:\Tools\flutter"
+export "FLUTTER_APPLICATION_PATH=c:\experiments\DatePickerTimetable"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=0.0.1"

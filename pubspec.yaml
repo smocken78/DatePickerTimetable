@@ -1,7 +1,7 @@
 name: date_picker_timetable
 description: Date Picker Library that provides a calendar as a horizontal timeline.
 version: 0.0.1
-homepage: https://github.com/smocken78/date_picker_timetable
+homepage: https://github.com/smocken78/DatePickerTimetable
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   intl: '>=0.17.0 < 0.19.0'
 
 dev_dependencies:
