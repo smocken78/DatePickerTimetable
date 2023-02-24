@@ -58,8 +58,11 @@ class DatePicker extends StatefulWidget {
   /// Locale for the calendar default: en_us
   final String locale;
 
-  ///
-  final bool reverse;
+  // reverse dates
+  final bool reverseDays;
+
+  //animate to selected date
+  final bool animateToSelection;
 
   const DatePicker(
     this.startDate, {
@@ -78,8 +81,9 @@ class DatePicker extends StatefulWidget {
     this.inactiveDates,
     this.daysCount = 500,
     this.onDateChange,
+    this.reverseDays = false,
+    this.animateToSelection = false,
     this.locale = "en_US",
-    this.reverse = false,
   }) : assert(
             activeDates == null || inactiveDates == null,
             "Can't "
@@ -103,6 +107,14 @@ class _DatePickerState extends State<DatePicker> {
   late final TextStyle deactivatedDayStyle;
 
   @override
+  void didUpdateWidget(covariant DatePicker oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.controller != null && widget.animateToSelection) {
+      widget.controller!.animateToSelection();
+    }
+  }
+
+  @override
   void initState() {
     // Init the calendar locale
     initializeDateFormatting(widget.locale, null);
@@ -113,30 +125,27 @@ class _DatePickerState extends State<DatePicker> {
       this,
     );
 
-    selectedDateStyle =
-        widget.dateTextStyle.copyWith(color: widget.selectedTextColor);
-    selectedMonthStyle =
-        widget.monthTextStyle.copyWith(color: widget.selectedTextColor);
-    selectedDayStyle =
-        widget.dayTextStyle.copyWith(color: widget.selectedTextColor);
+    selectedDateStyle = widget.dateTextStyle.copyWith(
+      color: widget.selectedTextColor,
+    );
+    selectedMonthStyle = widget.monthTextStyle.copyWith(
+      color: widget.selectedTextColor,
+    );
+    selectedDayStyle = widget.dayTextStyle.copyWith(
+      color: widget.selectedTextColor,
+    );
 
-    deactivatedDateStyle =
-        widget.dateTextStyle.copyWith(color: widget.deactivatedColor);
-    deactivatedMonthStyle =
-        widget.monthTextStyle.copyWith(color: widget.deactivatedColor);
-    deactivatedDayStyle =
-        widget.dayTextStyle.copyWith(color: widget.deactivatedColor);
+    deactivatedDateStyle = widget.dateTextStyle.copyWith(
+      color: widget.deactivatedColor,
+    );
+    deactivatedMonthStyle = widget.monthTextStyle.copyWith(
+      color: widget.deactivatedColor,
+    );
+    deactivatedDayStyle = widget.dayTextStyle.copyWith(
+      color: widget.deactivatedColor,
+    );
 
     super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant DatePicker oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _currentDate = widget.initialSelectedDate;
-    if (widget.controller != null) {
-      widget.controller!.animateToSelection();
-    }
   }
 
   @override
@@ -144,8 +153,8 @@ class _DatePickerState extends State<DatePicker> {
     return SizedBox(
       height: widget.height,
       child: ListView.builder(
-        reverse: widget.reverse,
         itemCount: widget.daysCount,
+        reverse: widget.reverseDays,
         scrollDirection: Axis.horizontal,
         controller: _controller,
         itemBuilder: (context, index) {
@@ -189,7 +198,7 @@ class _DatePickerState extends State<DatePicker> {
 
           // Check if this date is the one that is currently selected
           bool isSelected = _currentDate != null
-              ? DateUtils.isSameDay(date, _currentDate!)
+              ? DateUtils.isSameDay(date, _currentDate)
               : false;
 
           // Return the Date Widget
@@ -219,7 +228,9 @@ class _DatePickerState extends State<DatePicker> {
               if (isDeactivated) return;
 
               // A date is selected
-              widget.onDateChange?.call(selectedDate);
+              if (widget.onDateChange != null) {
+                widget.onDateChange!(selectedDate);
+              }
               setState(() {
                 _currentDate = selectedDate;
               });

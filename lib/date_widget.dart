@@ -17,8 +17,7 @@ class DateWidget extends StatelessWidget {
   final DateSelectionCallback? onDateSelected;
   final String? locale;
 
-  const DateWidget({
-    super.key,
+  const DateWidget({super.key, 
     required this.date,
     required this.monthTextStyle,
     required this.dayTextStyle,
@@ -34,32 +33,22 @@ class DateWidget extends StatelessWidget {
     return InkWell(
       child: Container(
         width: width,
-        margin: const EdgeInsets.all(
-          3.0,
-        ),
+        margin: const EdgeInsets.all(3.0),
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(
-              8.0,
-            ),
-          ),
+          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
           color: selectionColor,
         ),
         child: Padding(
-          padding: const EdgeInsets.all(
-            8,
-          ),
+          padding: const EdgeInsets.all(8),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
-                  DateFormat("MMM", locale).format(date).toUpperCase(), // Month
+              Text(DateFormat("MMM", locale).format(date).toUpperCase(), // Month
                   style: monthTextStyle),
               Text(date.day.toString(), // Date
                   style: dateTextStyle),
-              Text(
-                  DateFormat("E", locale).format(date).toUpperCase(), // WeekDay
+              Text(DateFormat("E", locale).format(date).toUpperCase(), // WeekDay
                   style: dayTextStyle)
             ],
           ),
@@ -67,7 +56,10 @@ class DateWidget extends StatelessWidget {
       ),
       onTap: () {
         // Check if onDateSelected is not null
-        onDateSelected?.call(date);
+        if (onDateSelected != null) {
+          // Call the onDateSelected Function
+          onDateSelected!(date);
+        }
       },
     );
   }
