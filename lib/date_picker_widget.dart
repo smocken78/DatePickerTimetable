@@ -61,7 +61,7 @@ class DatePicker extends StatefulWidget {
   // reverse dates
   final bool reverseDays;
 
-  //animate to selected date
+  //animate to selected date should only to be used with a single datepicker widget
   final bool animateToSelection;
 
   const DatePicker(
@@ -266,9 +266,10 @@ class DatePickerController {
 
     // animate to the current date
     _datePickerState!._controller.animateTo(
-        _calculateDateOffset(_datePickerState!._currentDate!),
-        duration: duration,
-        curve: curve);
+      _calculateDateOffset(_datePickerState!._currentDate!),
+      duration: duration,
+      curve: curve,
+    );
   }
 
   /// This function will animate to any date that is passed as an argument
