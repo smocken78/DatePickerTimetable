@@ -17,7 +17,8 @@ class DateWidget extends StatelessWidget {
   final DateSelectionCallback? onDateSelected;
   final String? locale;
 
-  const DateWidget({super.key, 
+  const DateWidget({
+    super.key,
     required this.date,
     required this.monthTextStyle,
     required this.dayTextStyle,
@@ -44,11 +45,13 @@ class DateWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(DateFormat("MMM", locale).format(date).toUpperCase(), // Month
+              Text(
+                  DateFormat("MMM", locale).format(date).toUpperCase(), // Month
                   style: monthTextStyle),
               Text(date.day.toString(), // Date
                   style: dateTextStyle),
-              Text(DateFormat("E", locale).format(date).toUpperCase(), // WeekDay
+              Text(
+                  DateFormat("E", locale).format(date).toUpperCase(), // WeekDay
                   style: dayTextStyle)
             ],
           ),
