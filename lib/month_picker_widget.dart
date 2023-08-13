@@ -118,33 +118,25 @@ class _MonthPickerState extends State<MonthPicker> {
     );
   }
 
-  // function to convert month to last day of month
-  DateTime _lastDayOfMonth(DateTime date) {
-    return DateTime(date.year, date.month + 1, 0);
-  }
-
   // function to convert month to fist day of month
   DateTime _firstDayOfMonth(DateTime date) {
     return DateTime(date.year, date.month, 1);
-  }
-
-  bool _compareDate(DateTime date1, DateTime date2) {
-    return date1.day == date2.day &&
-        date1.month == date2.month &&
-        date1.year == date2.year;
   }
 }
 
 class MonthPickerTimelineController {
   _MonthPickerState? _monthTimelineState;
 
+  // ignore: library_private_types_in_public_api
   void setMonthTimelineState(_MonthPickerState state) {
     _monthTimelineState = state;
   }
 
   void jumpToSelection() {
-    assert(_monthTimelineState != null,
-        'DatePickerController is not attached to any DatePicker View.');
+    assert(
+      _monthTimelineState != null,
+      'MonthTimelineController is not attached to any DatePicker View.',
+    );
 
     // jump to the current Date
     _monthTimelineState!._controller
@@ -154,8 +146,10 @@ class MonthPickerTimelineController {
   /// This function will animate the Timeline to the currently selected Date
   void animateToSelection(
       {duration = const Duration(milliseconds: 500), curve = Curves.linear}) {
-    assert(_monthTimelineState != null,
-        'DatePickerController is not attached to any DatePicker View.');
+    assert(
+      _monthTimelineState != null,
+      'MonthTimelineController is not attached to any DatePicker View.',
+    );
 
     // animate to the current date
     _monthTimelineState!._controller.animateTo(
@@ -168,8 +162,10 @@ class MonthPickerTimelineController {
   /// In case a date is out of range nothing will happen
   void animateToDate(DateTime date,
       {duration = const Duration(milliseconds: 500), curve = Curves.linear}) {
-    assert(_monthTimelineState != null,
-        'MonthTimelineController is not attached to any DatePicker View.');
+    assert(
+      _monthTimelineState != null,
+      'MonthTimelineController is not attached to any DatePicker View.',
+    );
 
     _monthTimelineState!._controller.animateTo(_calculateDateOffset(date),
         duration: duration, curve: curve);
@@ -180,7 +176,7 @@ class MonthPickerTimelineController {
   void setDateAndAnimate(DateTime date,
       {duration = const Duration(milliseconds: 500), curve = Curves.linear}) {
     assert(_monthTimelineState != null,
-        'DatePickerController is not attached to any DatePicker View.');
+        'MonthTimelineController is not attached to any DatePicker View.');
 
     _monthTimelineState!._controller.animateTo(_calculateDateOffset(date),
         duration: duration, curve: curve);

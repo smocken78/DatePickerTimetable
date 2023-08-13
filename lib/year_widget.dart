@@ -12,6 +12,7 @@ class YearWidget extends StatelessWidget {
   final bool isSelected;
 
   const YearWidget({
+    super.key,
     required this.month,
     required this.yearTextStyle,
     required this.selectionColor,
@@ -47,7 +48,7 @@ class YearWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "${DateFormat("y", locale).format(month).toUpperCase()}", // Month
+                DateFormat("y", locale).format(month).toUpperCase(), 
                 style: yearTextStyle,
                 textAlign: TextAlign.center,
               ),

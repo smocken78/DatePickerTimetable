@@ -1,4 +1,3 @@
-
 import 'package:date_picker_timetable/extra/color.dart';
 import 'package:date_picker_timetable/extra/style.dart';
 import 'package:date_picker_timetable/year_widget.dart';
@@ -114,33 +113,25 @@ class _YearPickerTimelineState extends State<YearPickerTimeline> {
     );
   }
 
-  // function to convert month to last day of month
-  DateTime _lastDayOfMonth(DateTime date) {
-    return DateTime(date.year, date.month + 1, 0);
-  }
-
   // function to convert month to fist day of month
   DateTime _firstDayOfMonth(DateTime date) {
     return DateTime(date.year, date.month, 1);
-  }
-
-  bool _compareDate(DateTime date1, DateTime date2) {
-    return date1.day == date2.day &&
-        date1.month == date2.month &&
-        date1.year == date2.year;
   }
 }
 
 class YearPickerTimelineController {
   _YearPickerTimelineState? _monthTimelineState;
 
+  // ignore: library_private_types_in_public_api
   void setMonthTimelineState(_YearPickerTimelineState state) {
     _monthTimelineState = state;
   }
 
   void jumpToSelection() {
-    assert(_monthTimelineState != null,
-        'DatePickerController is not attached to any DatePicker View.');
+    assert(
+      _monthTimelineState != null,
+      'YearTimelineController is not attached to any DatePicker View.',
+    );
 
     // jump to the current Date
     _monthTimelineState!._controller
@@ -150,8 +141,10 @@ class YearPickerTimelineController {
   /// This function will animate the Timeline to the currently selected Date
   void animateToSelection(
       {duration = const Duration(milliseconds: 500), curve = Curves.linear}) {
-    assert(_monthTimelineState != null,
-        'DatePickerController is not attached to any DatePicker View.');
+    assert(
+      _monthTimelineState != null,
+      'YearTimelineController is not attached to any DatePicker View.',
+    );
 
     // animate to the current date
     _monthTimelineState!._controller.animateTo(
@@ -165,7 +158,7 @@ class YearPickerTimelineController {
   void animateToDate(DateTime date,
       {duration = const Duration(milliseconds: 500), curve = Curves.linear}) {
     assert(_monthTimelineState != null,
-        'MonthTimelineController is not attached to any DatePicker View.');
+        'YearTimelineController is not attached to any DatePicker View.');
 
     _monthTimelineState!._controller.animateTo(_calculateDateOffset(date),
         duration: duration, curve: curve);
@@ -175,15 +168,22 @@ class YearPickerTimelineController {
   /// this will also set that date as the current selected date
   void setDateAndAnimate(DateTime date,
       {duration = const Duration(milliseconds: 500), curve = Curves.linear}) {
-    assert(_monthTimelineState != null,
-        'DatePickerController is not attached to any DatePicker View.');
+    assert(
+      _monthTimelineState != null,
+      'YearTimelineController is not attached to any DatePicker View.',
+    );
 
     _monthTimelineState!._controller.animateTo(_calculateDateOffset(date),
         duration: duration, curve: curve);
 
     if (date.compareTo(_monthTimelineState!.widget.startDate) >= 0 &&
-        date.compareTo(_monthTimelineState!.widget.startDate
-                .add(Duration(days: _monthTimelineState!.widget.yearCount))) <=
+        date.compareTo(
+              _monthTimelineState!.widget.startDate.add(
+                Duration(
+                  days: _monthTimelineState!.widget.yearCount,
+                ),
+              ),
+            ) <=
             0) {
       // date is in the range
       _monthTimelineState!._currentDate = date;

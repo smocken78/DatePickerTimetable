@@ -13,6 +13,7 @@ class MonthWidget extends StatelessWidget {
   final bool isSelected;
 
   const MonthWidget({
+    super.key,
     required this.month,
     required this.monthTextStyle,
     required this.dateTextStyle,

@@ -3,3 +3,6 @@
 
 ## 0.0.2
 * Fixed some bugs in merged requests 
+
+## 0.0.3
+* Added month picker 
