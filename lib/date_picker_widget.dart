@@ -83,7 +83,7 @@ class DatePicker extends StatefulWidget {
     this.onDateChange,
     this.reverseDays = false,
     this.animateToSelection = false,
-    this.locale = "en_US",
+    this.locale = "de_DE",
   }) : assert(
             activeDates == null || inactiveDates == null,
             "Can't "
