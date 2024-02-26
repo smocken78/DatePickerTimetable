@@ -5,4 +5,7 @@
 * Fixed some bugs in merged requests 
 
 ## 0.0.3
-* Added month picker 
+* Added month picker
+
+## 0.0.4
+* Updated example and defaults for height and width of widgets
