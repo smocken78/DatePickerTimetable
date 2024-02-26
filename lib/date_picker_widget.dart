@@ -68,7 +68,7 @@ class DatePicker extends StatefulWidget {
     this.startDate, {
     super.key,
     this.width = 60,
-    this.height = 80,
+    this.height = 90,
     this.controller,
     this.monthTextStyle = defaultMonthTextStyle,
     this.dayTextStyle = defaultDayTextStyle,

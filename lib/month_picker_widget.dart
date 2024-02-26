@@ -81,9 +81,13 @@ class _MonthPickerState extends State<MonthPicker> {
         itemCount: widget.monthCount,
         scrollDirection: Axis.horizontal,
         controller: _controller,
-        reverse: true,
+        reverse: false,
         itemBuilder: (context, index) {
-          DateTime date = widget.startDate.subtract(Duration(days: index * 30));
+          DateTime date = widget.startDate.add(
+            Duration(
+              days: index * 30,
+            ),
+          );
           date = _firstDayOfMonth(date);
 
           // Check if this date is the one that is currently selected

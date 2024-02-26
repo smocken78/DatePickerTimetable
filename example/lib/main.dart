@@ -8,9 +8,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: MyHomePage(title: 'Date Picker Table Demo'),
     );
   }
@@ -63,35 +60,44 @@ class _MyHomePageState extends State<MyHomePage> {
             _controller.animateToSelection();
           },
         ),
-        appBar: AppBar(
-          title: Text(widget.title!),
-        ),
         body: Container(
-          padding: EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(
+            20.0,
+          ),
           color: Colors.blueGrey[100],
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text("You Selected Month:"),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(
+                  10,
+                ),
               ),
-              Text(_selectedMonthValue.toString()),
+              Text(
+                _selectedMonthValue.toString(),
+              ),
               Padding(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(
+                  20,
+                ),
               ),
               Text("You Selected Day:"),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(
+                  10,
+                ),
               ),
               Text(_selectedDayValue.toString()),
               Padding(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(
+                  20,
+                ),
               ),
               Container(
                 child: MonthPicker(
                   startDate: DateTime.now(),
-                  height: 80,
+                  height: 90,
                   initialSelectedDate: _selectedMonthValue,
                   selectionColor: Colors.black,
                   selectedTextColor: Colors.white,
@@ -107,16 +113,28 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: DatePicker(
                   firstDayOfMonth(_selectedMonthValue),
                   width: 60,
-                  height: 80,
+                  height: 90,
                   controller: _controller,
                   initialSelectedDate: _selectedDayValue,
                   selectionColor: Colors.black,
                   selectedTextColor: Colors.white,
                   daysCount: daysInMonth(_selectedMonthValue),
                   inactiveDates: [
-                    DateTime.now().add(Duration(days: 3)),
-                    DateTime.now().add(Duration(days: 4)),
-                    DateTime.now().add(Duration(days: 7))
+                    DateTime.now().add(
+                      Duration(
+                        days: 3,
+                      ),
+                    ),
+                    DateTime.now().add(
+                      Duration(
+                        days: 4,
+                      ),
+                    ),
+                    DateTime.now().add(
+                      Duration(
+                        days: 7,
+                      ),
+                    ),
                   ],
                   onDateChange: (date) {
                     // New date selected
@@ -129,7 +147,9 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 child: YearPickerTimeline(
                   startDate: DateTime.now(),
-                  height: 80,
+                  yearCount: 10,
+                  height: 90,
+                  width: 70,
                   initialSelectedDate: _selectedMonthValue,
                   selectionColor: Colors.black,
                   selectedTextColor: Colors.white,

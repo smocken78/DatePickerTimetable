@@ -28,19 +28,30 @@ class YearWidget extends StatelessWidget {
     return InkWell(
       child: Container(
         width: width,
-        margin: const EdgeInsets.all(3.0),
+        margin: const EdgeInsets.all(
+          3.0,
+        ),
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(
+              8.0,
+            ),
+          ),
           color: selectionColor,
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(
+            8,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 2.0),
+                padding: const EdgeInsets.only(
+                  top: 2.0,
+                ),
                 child: Icon(
                   Icons.circle,
                   color: iconColor,
@@ -48,7 +59,7 @@ class YearWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                DateFormat("y", locale).format(month).toUpperCase(), 
+                DateFormat("y", locale).format(month).toUpperCase(),
                 style: yearTextStyle,
                 textAlign: TextAlign.center,
               ),

@@ -27,7 +27,7 @@ class YearPickerTimeline extends StatefulWidget {
       {Key? key,
       required this.startDate,
       this.initialSelectedDate,
-      this.width = 60,
+      this.width = 70,
       this.yearCount = 12,
       this.height = 80,
       this.locale = "de_DE",
@@ -77,15 +77,23 @@ class _YearPickerTimelineState extends State<YearPickerTimeline> {
         itemCount: widget.yearCount,
         scrollDirection: Axis.horizontal,
         controller: _controller,
-        reverse: true,
+        reverse: false,
         itemBuilder: (context, index) {
-          DateTime date =
-              widget.startDate.subtract(Duration(days: index * 365));
-          date = _firstDayOfMonth(date);
+          DateTime date = widget.startDate.add(
+            Duration(
+              days: index * 365,
+            ),
+          );
+          date = _firstDayOfMonth(
+            date,
+          );
 
           // Check if this date is the one that is currently selected
           bool isSelected = _currentDate != null
-              ? DateUtils.isSameMonth(date, _currentDate!)
+              ? DateUtils.isSameMonth(
+                  date,
+                  _currentDate!,
+                )
               : false;
 
           return YearWidget(
@@ -194,9 +202,10 @@ class YearPickerTimelineController {
   /// date provided in the argument
   double _calculateDateOffset(DateTime date) {
     final startDate = DateTime(
-        _monthTimelineState!.widget.startDate.year,
-        _monthTimelineState!.widget.startDate.month,
-        _monthTimelineState!.widget.startDate.day);
+      _monthTimelineState!.widget.startDate.year,
+      _monthTimelineState!.widget.startDate.month,
+      _monthTimelineState!.widget.startDate.day,
+    );
 
     int offset = date.difference(startDate).inDays;
     return (offset * _monthTimelineState!.widget.width) + (offset * 6);
