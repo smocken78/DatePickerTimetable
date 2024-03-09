@@ -23,21 +23,21 @@ class YearPickerTimeline extends StatefulWidget {
   final Color selectionColor;
   final Color iconColor;
 
-  const YearPickerTimeline(
-      {Key? key,
-      required this.startDate,
-      this.initialSelectedDate,
-      this.width = 70,
-      this.yearCount = 12,
-      this.height = 80,
-      this.locale = "de_DE",
-      this.yearTextStyle = defaultYearTextStyle,
-      this.controller,
-      this.onDateChange,
-      this.selectedTextColor = Colors.white,
-      this.iconColor = Colors.white,
-      this.selectionColor = AppColors.defaultSelectionColor})
-      : super(key: key);
+  const YearPickerTimeline({
+    super.key,
+    required this.startDate,
+    this.initialSelectedDate,
+    this.width = 70,
+    this.yearCount = 12,
+    this.height = 80,
+    this.locale = "de_DE",
+    this.yearTextStyle = defaultYearTextStyle,
+    this.controller,
+    this.onDateChange,
+    this.selectedTextColor = Colors.white,
+    this.iconColor = Colors.white,
+    this.selectionColor = AppColors.defaultSelectionColor,
+  });
 
   @override
   State<YearPickerTimeline> createState() => _YearPickerTimelineState();
