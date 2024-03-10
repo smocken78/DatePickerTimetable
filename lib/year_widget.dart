@@ -19,11 +19,7 @@ class YearWidget extends StatelessWidget {
     required this.selectionColor,
     required this.isSelected,
     required this.iconColor,
-    this.borderRadius = const BorderRadius.all(
-      Radius.circular(
-        8.0,
-      ),
-    ),
+    required this.borderRadius,
     this.width,
     this.onDateSelected,
     this.locale,

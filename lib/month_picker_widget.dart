@@ -21,6 +21,7 @@ class MonthPicker extends StatefulWidget {
   final Color selectedTextColor;
   final Color selectionColor;
   final Color iconColor;
+  final BorderRadiusGeometry borderRadius;
 
   const MonthPicker({
     super.key,
@@ -37,6 +38,11 @@ class MonthPicker extends StatefulWidget {
     this.selectedTextColor = Colors.white,
     this.iconColor = Colors.white,
     this.selectionColor = AppColors.defaultSelectionColor,
+    this.borderRadius = const BorderRadius.all(
+      Radius.circular(
+        8.0,
+      ),
+    ),
   });
 
   @override
@@ -106,6 +112,7 @@ class _MonthPickerState extends State<MonthPicker> {
             selectionColor:
                 isSelected ? widget.selectionColor : Colors.transparent,
             iconColor: isSelected ? widget.iconColor : widget.selectionColor,
+            borderRadius: widget.borderRadius,
             onDateSelected: (selectedDate) {
               // A date is selected
               if (widget.onDateChange != null) {

@@ -24,11 +24,7 @@ class DateWidget extends StatelessWidget {
     required this.dayTextStyle,
     required this.dateTextStyle,
     required this.selectionColor,
-    this.borderRadius = const BorderRadius.all(
-      Radius.circular(
-        8.0,
-      ),
-    ),
+    required this.borderRadius,
     this.width,
     this.onDateSelected,
     this.locale,

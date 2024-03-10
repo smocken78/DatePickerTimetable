@@ -64,6 +64,9 @@ class DatePicker extends StatefulWidget {
   //animate to selected date should only to be used with a single datepicker widget
   final bool animateToSelection;
 
+  //border radius for DateWidget
+  final BorderRadiusGeometry borderRadius;
+
   const DatePicker(
     this.startDate, {
     super.key,
@@ -76,6 +79,11 @@ class DatePicker extends StatefulWidget {
     this.selectedTextColor = Colors.white,
     this.selectionColor = AppColors.defaultSelectionColor,
     this.deactivatedColor = AppColors.defaultDeactivatedColor,
+    this.borderRadius = const BorderRadius.all(
+      Radius.circular(
+        8.0,
+      ),
+    ),
     this.initialSelectedDate,
     this.activeDates,
     this.inactiveDates,
@@ -221,6 +229,7 @@ class _DatePickerState extends State<DatePicker> {
                     : widget.dayTextStyle,
             width: widget.width,
             locale: widget.locale,
+            borderRadius: widget.borderRadius,
             selectionColor:
                 isSelected ? widget.selectionColor : Colors.transparent,
             onDateSelected: (selectedDate) {

@@ -22,6 +22,7 @@ class YearPickerTimeline extends StatefulWidget {
   final Color selectedTextColor;
   final Color selectionColor;
   final Color iconColor;
+  final BorderRadiusGeometry borderRadius;
 
   const YearPickerTimeline({
     super.key,
@@ -37,6 +38,11 @@ class YearPickerTimeline extends StatefulWidget {
     this.selectedTextColor = Colors.white,
     this.iconColor = Colors.white,
     this.selectionColor = AppColors.defaultSelectionColor,
+    this.borderRadius = const BorderRadius.all(
+      Radius.circular(
+        8.0,
+      ),
+    ),
   });
 
   @override
@@ -106,6 +112,7 @@ class _YearPickerTimelineState extends State<YearPickerTimeline> {
             selectionColor:
                 isSelected ? widget.selectionColor : Colors.transparent,
             iconColor: isSelected ? widget.iconColor : widget.selectionColor,
+            borderRadius: widget.borderRadius,
             onDateSelected: (selectedDate) {
               // A date is selected
               if (widget.onDateChange != null) {
