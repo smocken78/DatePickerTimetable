@@ -1,9 +1,8 @@
-/// ***
-/// This class consists of the DateWidget that is used in the ListView.builder
-///
-/// Author: Vivek Kaushik <me@vivekkasuhik.com>
-/// github: https://github.com/iamvivekkaushik/
-/// ***
+/* 
+ This class consists of the DateWidget that is used in the ListView.builder
+ Author: Vivek Kaushik <me@vivekkasuhik.com>
+ github: https://github.com/iamvivekkaushik/
+*/
 
 import 'package:date_picker_timetable/gestures/tap.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +15,7 @@ class DateWidget extends StatelessWidget {
   final Color selectionColor;
   final DateSelectionCallback? onDateSelected;
   final String? locale;
+  final BorderRadiusGeometry borderRadius;
 
   const DateWidget({
     super.key,
@@ -24,6 +24,7 @@ class DateWidget extends StatelessWidget {
     required this.dayTextStyle,
     required this.dateTextStyle,
     required this.selectionColor,
+    required this.borderRadius,
     this.width,
     this.onDateSelected,
     this.locale,
@@ -38,11 +39,7 @@ class DateWidget extends StatelessWidget {
           3.0,
         ),
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(
-              8.0,
-            ),
-          ),
+          borderRadius: borderRadius,
           color: selectionColor,
         ),
         child: Padding(

@@ -10,6 +10,7 @@ class YearWidget extends StatelessWidget {
   final DateSelectionCallback? onDateSelected;
   final String? locale;
   final bool isSelected;
+  final BorderRadiusGeometry borderRadius;
 
   const YearWidget({
     super.key,
@@ -18,6 +19,7 @@ class YearWidget extends StatelessWidget {
     required this.selectionColor,
     required this.isSelected,
     required this.iconColor,
+    required this.borderRadius,
     this.width,
     this.onDateSelected,
     this.locale,

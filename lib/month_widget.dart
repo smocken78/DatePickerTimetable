@@ -11,6 +11,7 @@ class MonthWidget extends StatelessWidget {
   final DateSelectionCallback? onDateSelected;
   final String? locale;
   final bool isSelected;
+  final BorderRadiusGeometry borderRadius;
 
   const MonthWidget({
     super.key,
@@ -20,6 +21,7 @@ class MonthWidget extends StatelessWidget {
     required this.selectionColor,
     required this.isSelected,
     required this.iconColor,
+    required this.borderRadius,
     this.width,
     this.onDateSelected,
     this.locale,
@@ -34,11 +36,7 @@ class MonthWidget extends StatelessWidget {
           3.0,
         ),
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(
-              8.0,
-            ),
-          ),
+          borderRadius: borderRadius,
           color: selectionColor,
         ),
         child: Padding(

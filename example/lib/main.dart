@@ -88,7 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   10,
                 ),
               ),
-              Text(_selectedDayValue.toString()),
+              Text(
+                _selectedDayValue.toString(),
+              ),
               Padding(
                 padding: EdgeInsets.all(
                   20,
@@ -101,6 +103,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   initialSelectedDate: _selectedMonthValue,
                   selectionColor: Colors.black,
                   selectedTextColor: Colors.white,
+                  borderRadius: BorderRadius.circular(
+                    16,
+                  ),
                   onDateChange: (date) {
                     // New date selected
                     setState(() {
@@ -153,6 +158,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   initialSelectedDate: _selectedMonthValue,
                   selectionColor: Colors.black,
                   selectedTextColor: Colors.white,
+                  borderRadius: BorderRadius.circular(
+                    12,
+                  ),
                   onDateChange: (date) {
                     // New date selected
                     setState(() {

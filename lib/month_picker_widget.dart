@@ -7,7 +7,6 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'gestures/tap.dart';
 
 class MonthPicker extends StatefulWidget {
-  /// Height of the selector
   final double height;
   final double width;
   final DateTime startDate;
@@ -22,9 +21,10 @@ class MonthPicker extends StatefulWidget {
   final Color selectedTextColor;
   final Color selectionColor;
   final Color iconColor;
+  final BorderRadiusGeometry borderRadius;
 
   const MonthPicker({
-    Key? key,
+    super.key,
     required this.startDate,
     this.initialSelectedDate,
     this.width = 60,
@@ -38,7 +38,12 @@ class MonthPicker extends StatefulWidget {
     this.selectedTextColor = Colors.white,
     this.iconColor = Colors.white,
     this.selectionColor = AppColors.defaultSelectionColor,
-  }) : super(key: key);
+    this.borderRadius = const BorderRadius.all(
+      Radius.circular(
+        8.0,
+      ),
+    ),
+  });
 
   @override
   State<MonthPicker> createState() => _MonthPickerState();
@@ -107,6 +112,7 @@ class _MonthPickerState extends State<MonthPicker> {
             selectionColor:
                 isSelected ? widget.selectionColor : Colors.transparent,
             iconColor: isSelected ? widget.iconColor : widget.selectionColor,
+            borderRadius: widget.borderRadius,
             onDateSelected: (selectedDate) {
               // A date is selected
               if (widget.onDateChange != null) {
