@@ -12,3 +12,6 @@
 
 ## 0.0.5
 * Add possibilty to define custom border radius for date_widget, month_widget and year_widget
+
+## 0.0.6
+* Update intl dependency
