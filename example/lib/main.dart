@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -14,15 +16,18 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({
+    super.key,
+    this.title,
+  });
   final String? title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  DatePickerController _controller = DatePickerController();
+  final DatePickerController _controller = DatePickerController();
 
   DateTime _selectedDayValue = DateTime.now();
   DateTime _selectedMonthValue = DateTime.now();
@@ -149,25 +154,23 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
               ),
-              Container(
-                child: YearPickerTimeline(
-                  startDate: DateTime.now(),
-                  yearCount: 10,
-                  height: 90,
-                  width: 70,
-                  initialSelectedDate: _selectedMonthValue,
-                  selectionColor: Colors.black,
-                  selectedTextColor: Colors.white,
-                  borderRadius: BorderRadius.circular(
-                    12,
-                  ),
-                  onDateChange: (date) {
-                    // New date selected
-                    setState(() {
-                      _selectedMonthValue = date;
-                    });
-                  },
+              YearPickerTimeline(
+                startDate: DateTime.now(),
+                yearCount: 10,
+                height: 90,
+                width: 70,
+                initialSelectedDate: _selectedMonthValue,
+                selectionColor: Colors.black,
+                selectedTextColor: Colors.white,
+                borderRadius: BorderRadius.circular(
+                  12,
                 ),
+                onDateChange: (date) {
+                  // New date selected
+                  setState(() {
+                    _selectedMonthValue = date;
+                  });
+                },
               )
             ],
           ),

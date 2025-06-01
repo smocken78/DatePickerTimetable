@@ -1,6 +1,6 @@
 name: date_picker_timetable
 description: Date, Month and Year Picker Library that provide a calendar as a horizontal timeline.
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/smocken78/DatePickerTimetable
 
 environment:
@@ -11,12 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-  intl: '>=0.18.0 < 0.20.0'
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
